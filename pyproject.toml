@@ -1,0 +1,24 @@
+[project]
+name = "local-doc-search-mcp"
+version = "0.1.0"
+description = "Search document in local chroma index"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "langchain-aws>=0.2.24",
+    "langchain-chroma>=0.2.4",
+    "langchain-community>=0.3.24",
+    "loguru>=0.7.3",
+    "mcp[cli]>=1.9.2",
+    "pydantic>=2.11.5",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-mock>=3.10.0",
+    "pytest-cov>=4.1.0",
+]
+
+[tool.setuptools]
+packages = ["mcp_server"]
