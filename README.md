@@ -149,3 +149,7 @@ When adding new tests, follow these guidelines:
 2. Mock external dependencies like Chroma and Bedrock
 3. Group related tests in the same file
 4. Follow the naming convention: `test_<function_name>_<scenario>`
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
