@@ -83,5 +83,8 @@ docs/_build
 # Mypy Cache
 .mypy_cache/
 
+# jupyter
+.ipynb_checkpoints/
+
 # Chroma index files
 chroma_dbt_langchain_db/

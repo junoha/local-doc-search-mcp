@@ -1,4 +1,104 @@
-## Testing the local Documentation Search MCP
+# Local Documentation Search MCP
+
+A Model Context Protocol (MCP) server for local document searching. This tool primarily provides vector search for dbt documentation, but allowing developers to efficiently search for any public OSS document.
+
+## Key Features
+
+- Efficient vector search for local indexed documentation
+- Ranking of search results based on relevance scores
+- Easy integration with AI assistants through MCP
+
+## Setup
+
+### Requirements
+
+- Python 3.12 or higher
+- AWS credentials (for accessing Bedrock service)
+
+### Installation Requirements
+
+Install `uv` from [Astral](https://docs.astral.sh/uv/getting-started/installation/) or the [GitHub README](https://github.com/astral-sh/uv#installation)
+
+### Installation
+
+```bash
+$ uv sync
+```
+
+## Usage
+
+Here are mcp.json format.
+
+```json
+{
+  "mcpServers": {
+    "local-doc-search-mcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/path/to/local-doc-search-mcp",
+        "run",
+        "main.py"
+      ],
+      "env": {
+        "AWS_PROFILE": "<profile-name>",
+        "AWS_REGION": "<Bedrock-model-region>",
+        "CHROMA_PERSIST_DIR": "<persisted-chrome-index-directory-path>",
+        "CHROMA_COLLECTION_NAME": "<chroma-index-name>"
+      },
+      "autoApprove": ["search_local_docs"]
+    }
+  }
+}
+```
+
+For example:
+
+```json
+{
+  "mcpServers": {
+    "local-doc-search-mcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/path/to/local-doc-search-mcp",
+        "run",
+        "main.py"
+      ],
+      "env": {
+        "AWS_PROFILE": "sandbox",
+        "AWS_REGION": "us-west-2",
+        "CHROMA_PERSIST_DIR": "/path/to/local-doc-search-mcp/chroma_dbt_langchain_db",
+        "CHROMA_COLLECTION_NAME": "dbt_all_docs"
+      },
+      "autoApprove": ["search_local_docs"]
+    }
+  }
+}
+```
+
+## Tools
+
+### search_local_docs
+
+```py
+def search_local_docs(query: str, k: str) -> list[SearchResult]:
+    """
+    Search the local documentation for a given query
+    Args:
+        query (str): The search term to look for in the documentation.
+        k (str): The number of results to return.
+    Returns:
+        str: A string containing the search results.
+   """
+```
+
+
+## Vector Database Preparation
+
+For information on how to vectorize documents and store them in Chroma, refer to `prepare_chroma_persist_db/dbt_docs.ipynb`. You can share chroma index directory to other user to skip Bedrock embedding and building index.
+
+## Testing
 
 This document provides instructions for running and extending the test suite for the local Documentation Search MCP.
 
