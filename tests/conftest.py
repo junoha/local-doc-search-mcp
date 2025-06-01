@@ -4,7 +4,6 @@ import pytest
 import os
 from unittest.mock import Mock
 from langchain_core.documents import Document
-from mcp_server.model import SearchResult
 
 
 @pytest.fixture
