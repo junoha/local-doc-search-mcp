@@ -22,7 +22,7 @@ Install `uv` from [Astral](https://docs.astral.sh/uv/getting-started/installatio
 ### Installation
 
 ```bash
-$ uv sync
+uv sync
 ```
 
 ## Usage
@@ -96,7 +96,13 @@ def search_local_docs(query: str, k: str) -> list[SearchResult]:
 
 ## Vector Database Preparation
 
-For information on how to vectorize documents and store them in Chroma, refer to `prepare_chroma_persist_db/dbt_docs.ipynb`. You can share chroma index directory to other user to skip Bedrock embedding and building index.
+For information on how to vectorize documents and store them in Chroma, refer to `prepare_chroma_persist_db/*.ipynb`. You can share chroma index directory to other user to skip Bedrock embedding and building index.
+
+To create chroma index, start `jupyterlab`.
+
+```bash
+uv run jupyter lab
+```
 
 ## Testing
 
